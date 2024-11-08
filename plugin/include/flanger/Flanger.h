@@ -5,10 +5,7 @@ template <typename SampleType>
 class Flanger {
 public:
   void prepare(const juce::dsp::ProcessSpec& spec) {
-    constexpr auto MAX_DELAY_SECONDS = 0.002;
-    maxDelay_ =
-        static_cast<SampleType>(std::ceil(spec.sampleRate * MAX_DELAY_SECONDS));
-    middleDelay_ = maxDelay_ / SampleType(2);
+    juce::ignoreUnused(spec);
 
     reset();
   }
@@ -44,28 +41,10 @@ public:
     }
   }
 
-  SampleType processSample(SampleType sample) {
-    const auto& x = sample;
-    const auto xh = x + feedback_ * delayLine_.popSample(middleDelay_);
+  SampleType processSample(SampleType sample) { return sample; }
 
-    const auto currentDelay = maxDelay_;
-
-    const auto y =
-        blend_ * xh + feedforward_ * delayLine_.popSample(currentDelay);
-
-    delayLine_.pushSample(xh);
-
-    return y;
-  }
-
-  void reset() { delayLine_.reset(); }
+  void reset() {}
 
 private:
-  SampleType feedforward_ = SampleType(0.7);
-  SampleType feedback_ = SampleType(0.7);
-  SampleType blend_ = SampleType(0.7);
-  FractionalDelayLine delayLine_;
-  SampleType maxDelay_{};
-  SampleType middleDelay_{};
 };
 }  // namespace audio_plugin
