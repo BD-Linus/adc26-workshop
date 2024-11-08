@@ -249,21 +249,15 @@ In this part, we're going to implement a flanger prototype. To this end, we'll u
 
 1. Calculate the modulated-delay value
 
-    $$
-    m = s_\text{LFO,unipolar}[n]D.
-    $$
+    $$m = s_\text{LFO,unipolar}[n]D.$$
 
 2. Calculate the helper signal sample
 
-    $$
-    x_h[n] = x[n] + \text{feedback } x_h[n-D/2].
-    $$
+    $$x_h[n] = x[n] + \text{feedback } x_h[n-D/2].$$
 
 3. Calculate the output sample
 
-    $$
-    y[n] = \text{blend }x_h[n] + \text{feedforward } x_h[n - m].
-    $$
+    $$y[n] = \text{blend }x_h[n] + \text{feedforward } x_h[n - m].$$
 
 - [ ] Run `python py/main.py data/guitar_5th.wav` , listen to _output/guitar_5th.wav_, and confirm it sounds identical to the input
     - That's because the flanger returns the input sample in the `process_sample()` function.
