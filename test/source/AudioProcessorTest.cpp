@@ -10,7 +10,7 @@ TEST(AudioProcessor, StereoTest) {
   const juce::ScopedJuceInitialiser_GUI initializer;
 
   // given
-  AudioPluginAudioProcessor processor{{}};
+  AudioPluginAudioProcessor processor{};
 
   constexpr auto SAMPLES_PER_BLOCK = 441;
   constexpr auto SAMPLE_RATE = 44100_Hz;
