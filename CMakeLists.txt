@@ -8,7 +8,7 @@ cmake_minimum_required(VERSION 3.25)
 project(Adc25Workshop)
 
 # Always use the newest C++ standard on green-field projects if possible.
-# Currently, JUCE supports only C++ 20 cross-platform.
+# C++20 is a safe choice for older machines
 set(CMAKE_CXX_STANDARD 20)
 
 # I like to download the dependencies to the same folder as the project.
