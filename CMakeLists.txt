@@ -5,7 +5,7 @@
 cmake_minimum_required(VERSION 3.25)
 
 # Sets a few variables, like PROJECT_NAME
-project(Adc25Workshop)
+project(Adc26Workshop)
 
 # Always use the newest C++ standard on green-field projects if possible.
 # C++20 is a safe choice for older machines
