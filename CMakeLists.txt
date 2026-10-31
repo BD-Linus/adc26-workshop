@@ -23,16 +23,7 @@ include(cmake/CompilerWarnings.cmake)
 include(cmake/Util.cmake)
 
 # This commands downloads AND configures JUCE. It sets up some variables, like JUCE_SOURCE_DIR.
-cpmaddpackage(
-  NAME
-  JUCE
-  GIT_TAG
-  9.0.4
-  GITHUB_REPOSITORY
-  juce-framework/JUCE
-  SOURCE_DIR
-  ${LIB_DIR}/juce
-)
+add_subdirectory(libs/juce)
 
 cpmaddpackage(
   NAME
