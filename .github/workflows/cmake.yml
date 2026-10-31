@@ -34,26 +34,7 @@ jobs:
                libwebkit2gtk-4.1-dev \
                libglu1-mesa-dev mesa-common-dev
 
-    - name: Install ninja-build tool
-      uses: seanmiddleditch/gha-setup-ninja@v5
-
-    - name: Cache ninja-build
-      uses: actions/cache@v4
-      with:
-        key: ${{ runner.os }}-ninja-build
-        path: |
-          ${GITHUB_WORKSPACE}/ninja-build
-
     - uses: actions/checkout@v4
-      with:
-        lfs: true
-
-    - name: Cache dependencies
-      id: cache-libs
-      uses: actions/cache@v4
-      with:
-        path: libs
-        key: ${{ runner.os }}-libs-${{ hashFiles('CMakeLists.txt') }}-${{ hashFiles('test/CMakeLists.txt') }}
 
     - name: Configure CMake
       run: cmake --preset ${{ matrix.preset }}
@@ -75,15 +56,6 @@ jobs:
     - uses: ilammy/msvc-dev-cmd@v1 # use MSVC on Windows not minGW
 
     - uses: actions/checkout@v4
-      with:
-        lfs: true
-
-    - name: Cache dependencies
-      id: cache-libs
-      uses: actions/cache@v4
-      with:
-        path: libs
-        key: ${{ runner.os }}-libs-${{ hashFiles('CMakeLists.txt') }}-${{ hashFiles('test/CMakeLists.txt') }}
 
     - name: Configure CMake
       run: cmake --preset vs
