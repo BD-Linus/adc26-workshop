@@ -37,19 +37,9 @@ cpmaddpackage(
 )
 
 # Adds googletest.
-cpmaddpackage(
-  NAME
-  GOOGLETEST
-  GITHUB_REPOSITORY
-  google/googletest
-  VERSION
-  1.17.0
-  SOURCE_DIR
-  ${LIB_DIR}/googletest
-  OPTIONS
-  "INSTALL_GTEST OFF"
-  "gtest_force_shared_crt ON"
-)
+set(INSTALL_GTEST OFF)
+set(gtest_force_shared_crt ON)
+add_subdirectory(libs/googletest)
 
 # This command allows running tests from the "build" folder (the one where CMake generates the project to).
 enable_testing()
