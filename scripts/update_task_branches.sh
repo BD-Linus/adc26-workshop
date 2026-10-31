@@ -1,12 +1,12 @@
 #!/bin/bash
 
-git checkout task4a && \
+git checkout task4 && \
   git merge main && \
-git checkout task3a && \
-  git merge task4a && \
-git checkout task2a && \
-  git merge task3a && \
-git checkout task1a && \
-  git merge task2a && \
+git checkout task3 && \
+  git merge task4 && \
+git checkout task2 && \
+  git merge task3 && \
+git checkout task1 && \
+  git merge task2 && \
 git checkout main
 
