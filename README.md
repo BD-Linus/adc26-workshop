@@ -7,8 +7,8 @@ Workshop hosted at the Audio Developer Conference 2026 in Bristol.
 ## Table of Contents
 
 1. [🚀 Getting started](#-getting-started)
-    1. [GitHub Codespaces](#github-codespaces)
-    2. [Local setup](#local-setup)
+    1. [GitHub Codespaces](#github-codespaces-not-recommended)
+    2. [Local setup](#local-setup-recommended)
         1. [1. Install Git](#1-install-git)
             1. [Bonus tip](#bonus-tip)
         2. [2. Python environment setup](#2-python-environment-setup)
@@ -31,13 +31,13 @@ Workshop hosted at the Audio Developer Conference 2026 in Bristol.
 
 You can work on the code using [GitHub Codespaces](#github-codespaces) or [locally](#local-setup).
 
-### GitHub Codespaces
+### GitHub Codespaces (not recommended)
 
 The easiest way to get started is to use GitHub Codespaces.
 
 Pros: No need to install anything to your computer, everything runs in the cloud.
 
-Cons: Compilation may be slower. You will use a Linux environment. You won't be able to run the plugin, only end-2-end tests.
+Cons: Compilation will be **much** slower. The connection will break disrupting your workflow. You will use a Linux environment. You won't be able to run the plugin, only end-2-end tests.
 
 1. Fork the repo with all branches (untick "Copy the `main` branch only").
 
@@ -48,9 +48,9 @@ Cons: Compilation may be slower. You will use a Linux environment. You won't be 
 
 And that's it!
 
-### Local setup
+### Local setup (recommended)
 
-Follow these instructions **before** attending the workshop. There is high risk that because of low WiFi bandwidth at the conference venue, it will take too long or be impossible to set it up on the spot.
+Follow these instructions **before** attending the workshop. Low WiFi bandwidth at the conference venue will make it impossible to set up on the spot.
 
 #### 1. Install Git
 
