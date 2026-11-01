@@ -1,6 +1,6 @@
 # DSP in Practice Workshop Repository
 
-Workshop hosted at the Audio Developer Conference 2025 in Bristol.
+Workshop hosted at the Audio Developer Conference 2026 in Bristol.
 
 [Slides](docs/ADC25_Workshop_Slides_DSP_In_Practice.pdf)
 
@@ -9,24 +9,23 @@ Workshop hosted at the Audio Developer Conference 2025 in Bristol.
 1. [🚀 Getting started](#-getting-started)
     1. [GitHub Codespaces](#github-codespaces)
     2. [Local setup](#local-setup)
-        1. [1. Install Git with Git LFS and download LFS files](#1-install-git-with-git-lfs-and-download-lfs-files)
-           1. [1.1 Git LFS](#11-git-lfs)
-           2. [Bonus tip](#bonus-tip)
+        1. [1. Install Git](#1-install-git)
+            1. [Bonus tip](#bonus-tip)
         2. [2. Python environment setup](#2-python-environment-setup)
-           1. [2.1. Linux users](#21-linux-users)
+            1. [2.1. Linux users](#21-linux-users)
+            2. [2.2 Windows users](#22-windows-users)
         3. [3. C++ setup](#3-c-setup)
-           1. [3.1. Mac users](#31-mac-users)
-           2. [3.2. Windows users](#32-windows-users)
-              1. [3.2.1. If you want to use CMake from the command line](#321-if-you-want-to-use-cmake-from-the-command-line)
-           3. [3.3. Linux users](#33-linux-users)
-        4.  [4. Downloading dependencies](#4-downloading-dependencies)
-        5.  [5. Digital Audio Workstation](#5-digital-audio-workstation)
+            1. [3.1. Mac users](#31-mac-users)
+            2. [3.2. Windows users](#32-windows-users)
+                1. [3.2.1. If you want to use CMake from the command line](#321-if-you-want-to-use-cmake-from-the-command-line)
+            3. [3.3. Linux users](#33-linux-users)
+        4. [4. Testing the build](#4-testing-the-build)
+        5. [5. Digtial Audio Workstation](#5-digtial-audio-workstation)
 2. [📝 Workshop tasks](#-workshop-tasks)
     1. [Task 1 (`task1` branch): Design](#task-1-task1-branch-design)
     2. [Task 2 (`task2` branch): Prototype](#task-2-task2-branch-prototype)
     3. [Task 3 (`task3` branch): Implementation part 1](#task-3-task3-branch-implementation-part-1)
     4. [Task 4 (`task4` branch): Implementation part 2](#task-4-task4-branch-implementation-part-2)
-
 
 ## 🚀 Getting started
 
@@ -53,11 +52,12 @@ And that's it!
 
 Follow these instructions **before** attending the workshop. There is high risk that because of low WiFi bandwidth at the conference venue, it will take too long or be impossible to set it up on the spot.
 
-#### 1. Install Git with Git LFS and download LFS files
+#### 1. Install Git
 
 You need to have `git` installed and in your PATH. Here are the commands that we will use in this workshop:
 
 ```bash
+git clone https://github.com/<your-username>/adc26-workshop.git # clone the repository locally
 git checkout <branch-name> # check out the branch with the given name
 git checkout -b <new-branch-name> # create a new branch and check it out
 git status # show the status of the working tree
@@ -65,18 +65,6 @@ git diff # show the difference between the working tree and the last commit
 git add <path-to-file> # stage a file (especially important for untracked files)
 git commit -a -m "<commit-message>" # commit all changes with a specific message
 ```
-
-##### 1.1 Git LFS
-
-WAV files and PNG files require `git-lfs`. It should be bundled with your `git` installation but you may need to manually initialize it inside the repository. After cloning this repository, run
-
-```bash
-git lfs install
-git lfs fetch
-git lfs checkout
-```
-
-You can try playing back files in the _data_ folder to check if it worked correctly.
 
 ##### Bonus tip
 
@@ -184,16 +172,16 @@ sudo apt install libasound2-dev libjack-jackd2-dev \
     libglu1-mesa-dev mesa-common-dev
 ```
 
-#### 4. Downloading dependencies
+#### 4. Testing the build
 
 After installing everything from point 3, run these CMake commands in the terminal (or use the command palette in VS Code):
 
 ```bash
-# Downloads C++ dependencies and generates the project
+# Generate the project
 # Use "default" for Linux/macOS, "vs" for Visual Studio, and "xcode-build" for Xcode
 cmake --preset default
 
-# Builds the project
+# Build the project
 cmake --build --preset default
 ```
 
