@@ -22,8 +22,13 @@
       }
     },
     {
-      "name": "vs",
+      "name": "vs22",
       "generator": "Visual Studio 17 2022",
+      "binaryDir": "build/vs22"
+    },
+    {
+      "name": "vs",
+      "generator": "Visual Studio 18 2026",
       "binaryDir": "build/vs"
     },
     {
@@ -40,6 +45,10 @@
     {
       "name": "release",
       "configurePreset": "release"
+    },
+    {
+      "name": "vs22",
+      "configurePreset": "vs22"
     },
     {
       "name": "vs",
@@ -64,6 +73,11 @@
       "name": "release",
       "inherits": "default",
       "configurePreset": "release"
+    },
+    {
+      "name": "vs22",
+      "inherits": "default",
+      "configurePreset": "vs22"
     },
     {
       "name": "vs",
