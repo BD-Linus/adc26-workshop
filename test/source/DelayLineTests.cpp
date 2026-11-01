@@ -1,6 +1,6 @@
 #include <gtest/gtest.h>
 #include <juce_dsp/juce_dsp.h>
-#include "flanger/FractionalDelayLine.h"
+#include <plugin/plugin.h>
 #include <ranges>
 
 namespace audio_plugin {

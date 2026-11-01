@@ -1,8 +1,3 @@
-#include "flanger/PluginProcessor.h"
-#include <juce_audio_processors/juce_audio_processors.h>
-#include <juce_core/juce_core.h>
-#include <juce_dsp/juce_dsp.h>
-
 namespace audio_plugin {
 namespace {
 /** @brief This is taken straight from JUCE's WebViewPluginDemo.h */
@@ -37,7 +32,7 @@ AudioPluginAudioProcessor::AudioPluginAudioProcessor(
 AudioPluginAudioProcessor::~AudioPluginAudioProcessor() = default;
 
 const juce::String AudioPluginAudioProcessor::getName() const {
-  return JucePlugin_Name;
+  return PLUGIN_NAME;
 }
 
 bool AudioPluginAudioProcessor::acceptsMidi() const {

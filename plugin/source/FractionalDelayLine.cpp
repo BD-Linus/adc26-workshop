@@ -1,10 +1,3 @@
-#include <algorithm>
-#include <array>
-#include <vector>
-#include <cmath>
-#include "flanger/FractionalDelayLine.h"
-#include <wolfsound/common/wolfsound_assert.hpp>
-
 using namespace std;
 
 namespace audio_plugin {

@@ -1,5 +1,5 @@
 #include <gtest/gtest.h>
-#include <flanger/Flanger.h>
+#include <plugin/plugin.h>
 #include <wolfsound/test/wolfsound_ProcessorFileIoTest.hpp>
 
 namespace audio_plugin {

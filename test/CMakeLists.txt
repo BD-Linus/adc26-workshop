@@ -10,7 +10,7 @@ add_executable(${PROJECT_NAME} ${SOURCES})
 
 # Sets the necessary include directories: ours, JUCE's, and googletest's.
 target_include_directories(
-  ${PROJECT_NAME} PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/../plugin/include ${JUCE_SOURCE_DIR}/modules
+  ${PROJECT_NAME} PRIVATE ${JUCE_SOURCE_DIR}/modules
                           ${GOOGLETEST_SOURCE_DIR}/googletest/include
 )
 
@@ -22,16 +22,8 @@ target_compile_definitions(
 )
 
 # Thanks to the fact that we link against the gtest_main library, we don't have to write the main function ourselves.
-target_link_libraries(${PROJECT_NAME} PRIVATE Flanger wolfsound::wolfsound_dsp_utils)
+target_link_libraries(${PROJECT_NAME} PRIVATE plugin wolfsound::wolfsound_dsp_utils)
 target_link_libraries_system(${PROJECT_NAME} PRIVATE GTest::gtest_main)
-
-# Enables all warnings and treats warnings as errors.
-# This needs to be set up only for your projects, not 3rd party
-if(MSVC)
-  target_compile_options(${PROJECT_NAME} PRIVATE /W4 /WX)
-else()
-  target_compile_options(${PROJECT_NAME} PRIVATE -Wall -Wextra -Wpedantic)
-endif()
 
 # Adds googletest-specific CMake commands at our disposal.
 include(GoogleTest)

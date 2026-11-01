@@ -1,11 +1,5 @@
 #pragma once
 
-#include <juce_dsp/juce_dsp.h>
-#include <ranges>
-#include "flanger/FractionalDelayLine.h"
-#include <wolfsound/common/wolfsound_Frequency.hpp>
-#include <wolfsound/common/wolfsound_assert.hpp>
-
 namespace audio_plugin {
 template <typename SampleType>
 class Flanger {

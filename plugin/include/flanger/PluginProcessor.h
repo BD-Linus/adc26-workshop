@@ -1,9 +1,5 @@
 #pragma once
 
-#include <juce_audio_processors/juce_audio_processors.h>
-#include <juce_dsp/juce_dsp.h>
-#include "flanger/Flanger.h"
-
 namespace audio_plugin {
 class AudioPluginAudioProcessor : public juce::AudioProcessor {
 public:

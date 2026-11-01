@@ -26,16 +26,57 @@ include(cmake/Util.cmake)
 add_subdirectory(libs/juce)
 add_subdirectory(libs/wolfsound-dsp-utils)
 
-# Adds googletest.
-set(INSTALL_GTEST OFF)
-set(gtest_force_shared_crt ON)
-add_subdirectory(libs/googletest)
+# Adds the "plugin" JUCE module
+set(PLUGIN_NAME "Workshop Flanger")
+juce_add_module(plugin)
+
+# Adds a plugin target (that's basically what the Projucer does).
+juce_add_plugin(
+  ${PROJECT_NAME}
+  COMPANY_NAME
+  MyCompany # change this
+  IS_SYNTH
+  FALSE
+  NEEDS_MIDI_INPUT
+  FALSE
+  NEEDS_MIDI_OUTPUT
+  FALSE
+  PLUGIN_MANUFACTURER_CODE
+  MCMP # change this
+  PLUGIN_CODE
+  WRFL
+  FORMATS
+  Standalone
+  VST3
+  AU
+  PRODUCT_NAME
+  ${PLUGIN_NAME}
+  VERSION
+  0.0.0
+  COPY_PLUGIN_AFTER_BUILD
+  TRUE
+)
+
+target_compile_options(plugin INTERFACE "${PROJECT_WARNINGS_CXX}")
+target_compile_definitions(plugin INTERFACE PLUGIN_NAME="${PLUGIN_NAME}")
+
+# Links to all necessary dependencies. The present ones are recommended by JUCE.
+target_link_libraries(
+  ${PROJECT_NAME}
+  PRIVATE wolfsound::wolfsound_dsp_utils plugin
+  PUBLIC juce::juce_recommended_config_flags juce::juce_recommended_lto_flags juce::juce_recommended_warning_flags
+)
+
+# These definitions are recommended by JUCE.
+target_compile_definitions(${PROJECT_NAME} PUBLIC JUCE_WEB_BROWSER=0 JUCE_USE_CURL=0 JUCE_VST3_CAN_REPLACE_VST2=0)
 
 # This command allows running tests from the "build" folder (the one where CMake generates the project to).
 enable_testing()
 
-# Adds all the targets configured in the "plugin" folder.
-add_subdirectory(plugin)
+# Adds googletest.
+set(INSTALL_GTEST OFF)
+set(gtest_force_shared_crt ON)
+add_subdirectory(libs/googletest)
 
 # Adds all the targets configured in the "test" folder.
 add_subdirectory(test)
