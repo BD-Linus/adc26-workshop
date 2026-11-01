@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "dsp-in-practice-adc25-workshop"
-description = "Audio Developer Conference 2025 \"DSP in Practice\" Workshop repository"
+description = "Audio Developer Conference 2026 \"DSP in Practice\" Workshop repository"
 version = "0.0.1"
 requires-python = ">=3.8"
 readme = "README.md"
