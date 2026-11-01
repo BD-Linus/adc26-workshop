@@ -145,7 +145,7 @@ This workshop requires the following tools installed on your machine and availab
 
 - [CMake 3.25 or newer](https://cmake.org/download),
 - a **working C++ compiler** that supports C++ 20 (see platform-specific instructions below), and
-- a build system like [ninja](https://ninja-build.org/) (recommended), MSBuild (bundled with Visual Studio), xcode-build (bundled with Xcode), or make (UNIX Makefiles) (see platform-specific instructions below)
+- a build system like MSBuild (bundled with Visual Studio), xcode-build (bundled with Xcode), or make (UNIX Makefiles) (see platform-specific instructions below)
 
 ##### 3.1. Mac users
 
@@ -190,7 +190,7 @@ After installing everything from point 3, run these CMake commands in the termin
 
 ```bash
 # Downloads C++ dependencies and generates the project
-# Use "default" for ninja, "vs" for Visual Studio, and "xcode-build" for Xcode
+# Use "default" for Linux/macOS, "vs" for Visual Studio, and "xcode-build" for Xcode
 cmake --preset default
 
 # Builds the project
