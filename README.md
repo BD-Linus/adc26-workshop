@@ -127,6 +127,18 @@ To create a Python virtual environment, I needed to install `python3.12-venv` pa
 sudo apt install python3.12-venv
 ```
 
+You may need to adjust the Python version.
+
+##### 2.2 Windows users
+
+If you encounter a problem with `cannot be loaded - running scripts is disabled`, run
+
+```pwsh
+Set-ExecutionPolicy -ExecutionPolicy Bypass -Scope Process
+```
+
+in PowerShell, and try again.
+
 #### 3. C++ setup
 
 This workshop requires the following tools installed on your machine and available in your PATH:
