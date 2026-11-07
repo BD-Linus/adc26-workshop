@@ -20,7 +20,7 @@ Workshop hosted at the Audio Developer Conference 2026 in Bristol.
                 1. [3.2.1. If you want to use CMake from the command line](#321-if-you-want-to-use-cmake-from-the-command-line)
             3. [3.3. Linux users](#33-linux-users)
         4. [4. Testing the build](#4-testing-the-build)
-        5. [5. Digtial Audio Workstation](#5-digtial-audio-workstation)
+        5. [5. Digital Audio Workstation](#5-digital-audio-workstation)
 2. [📝 Workshop tasks](#-workshop-tasks)
     1. [Task 1 (`task1` branch): Design](#task-1-task1-branch-design)
     2. [Task 2 (`task2` branch): Prototype](#task-2-task2-branch-prototype)
@@ -29,7 +29,7 @@ Workshop hosted at the Audio Developer Conference 2026 in Bristol.
 
 ## 🚀 Getting started
 
-You can work on the code using [GitHub Codespaces](#github-codespaces) or [locally](#local-setup).
+You can work on the code using [GitHub Codespaces](#github-codespaces-not-recommended) or [locally](#local-setup-recommended).
 
 ### GitHub Codespaces (not recommended)
 
@@ -68,7 +68,7 @@ git commit -a -m "<commit-message>" # commit all changes with a specific message
 
 ##### Bonus tip
 
-The complete solution to all the tasks are present on the `main` branch. If at any time during the workshop you need to check the reference solution, compare the difference between your working tree and the `main` branch.
+The complete solutions to all the tasks are present on the `main` branch. If at any time during the workshop you need to check the reference solution, compare the difference between your working tree and the `main` branch.
 
 ```bash
 git diff main
@@ -78,7 +78,7 @@ In Visual Studio Code, there's a wonderful GitLens plugin that allows you to vis
 
 #### 2. Python environment setup
 
-For this workshop, you need to have Python 3 installed and in your PATH. Code was tested with Python 3.11 and 3.12.
+For this workshop, you need to have Python 3 installed and in your PATH. Code was tested with Python 3.11, 3.12, and 3.14.
 
 It's most comfortable to work in Python using `venv` (virtual environment).
 
@@ -137,7 +137,7 @@ This workshop requires the following tools installed on your machine and availab
 
 ##### 3.1. Mac users
 
-Install the latest version of Xcode. The repostitory works with Xcode 16. Older versions of Xcode may be problematic.
+Install the latest version of Xcode. The repository works with Xcode 16. Older versions of Xcode may be problematic.
 
 ##### 3.2. Windows users
 
@@ -145,9 +145,13 @@ Install the latest version of Visual Studio.
 
 ###### 3.2.1. If you want to use CMake from the command line
 
-On Windows, to have the compiler on your PATH, you need to run a batch script. Assuming, you have Visual Studio 2022 installed, you can run the following command to initialize C++ environment in your shell.
+On Windows, to have the compiler on your PATH, you need to run a batch script. Run the command matching your Visual Studio version to initialize the C++ environment in your shell (adjust `Community` if you use a different edition).
 
 ```batch
+REM Visual Studio 2026
+"C:\Program Files\Microsoft Visual Studio\18\Community\VC\Auxiliary\Build\vcvars64.bat"
+
+REM Visual Studio 2022
 "C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Auxiliary\Build\vcvars64.bat"
 ```
 
@@ -156,10 +160,10 @@ On Windows, to have the compiler on your PATH, you need to run a batch script. A
 Install `gcc` and `make`.
 
 ```bash
-sudo apt update && sudo apt install --only-upgrade gcc make
+sudo apt update && sudo apt install gcc make
 ```
 
-Before generating the project above, you need to install [JUCE dependencies](https://github.com/juce-framework/JUCE/blob/master/docs/Linux%20Dependencies.md) with the following command:
+Before generating the project (see [4. Testing the build](#4-testing-the-build)), you need to install [JUCE dependencies](https://github.com/juce-framework/JUCE/blob/master/docs/Linux%20Dependencies.md) with the following command:
 
 ```bash
 sudo apt update
@@ -178,18 +182,21 @@ After installing everything from point 3, run these CMake commands in the termin
 
 ```bash
 # Generate the project
-# Use "default" for Linux/macOS, "vs" for Visual Studio, and "xcode" for Xcode
+# Use "default" for Linux/macOS, "vs" for Visual Studio 2026, "vs22" for Visual Studio 2022, and "xcode" for Xcode
 cmake --preset default
 
-# Build the project
+# Build the project (use the same preset as above)
 cmake --build --preset default
+
+# Run the C++ tests (use the same preset as above)
+ctest --preset default
 ```
 
 The repository works well with the CLion IDE.
 
 C++ code in this repository is based on my [`audio-plugin-template` repository](https://github.com/JanWilczek/audio-plugin-template).
 
-#### 5. Digtial Audio Workstation
+#### 5. Digital Audio Workstation
 
 To run the workshop plugin, you need a digital audio workstation (DAW). I recommend [Reaper](https://www.reaper.fm/) or [Audacity](https://www.audacityteam.org/).
 
@@ -256,7 +263,7 @@ git checkout task2
     - [ ] Inspect the spectrograms generated in the _output_ folder. How is the spectrogram of the output different from the spectrogram of the input? Was it expected?
 - [ ] Add an LFO
     - [ ] Instantiate an `LFO` instance in the `Flanger` constructor
-    - [ ] Immediately set its freuqency to 0.1 Hz
+    - [ ] Immediately set its frequency to 0.1 Hz
     - [ ] In `process_sample()`, `get_next_value()` of the LFO and transform it to unipolar [0, 1] range
     - [ ] Calculate the delay value of the modulated tap for the current sample
     - [ ] Replace the previously fixed delay value in output sample computation with the LFO-modulated one
@@ -280,7 +287,7 @@ I intentionally set a high warning level and enabled "set warnings as errors" co
 
 In this part, you can put all your code into _Flanger.h_.
 
-- [ ] Generate and compile the C++ project as indicated in the [getting started section](#getting-started). Does the project build successfully? Can you see the "installation" message?
+- [ ] Generate and compile the C++ project as indicated in the [getting started section](#-getting-started). Does the project build successfully? Can you see the "installation" message?
 - [ ] Run the end-2-end test with `ctest --preset <used-preset>`. Is the output file the same as the input file?
 - [ ] Run the digital audio workstation (DAW) of your choice. Can you put the "Workshop Flanger" plugin on a track? Does it leave the input unaltered?
 - [ ] Add feedforward, feedback, and blend coefficients as class members of `Flanger`
