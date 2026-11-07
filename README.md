@@ -178,7 +178,7 @@ After installing everything from point 3, run these CMake commands in the termin
 
 ```bash
 # Generate the project
-# Use "default" for Linux/macOS, "vs" for Visual Studio, and "xcode-build" for Xcode
+# Use "default" for Linux/macOS, "vs" for Visual Studio, and "xcode" for Xcode
 cmake --preset default
 
 # Build the project
