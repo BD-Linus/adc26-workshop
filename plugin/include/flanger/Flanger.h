@@ -7,7 +7,7 @@ public:
   struct Parameters {
     using Ptr = std::shared_ptr<Parameters>;
 
-    wolfsound::Frequency lfoFrequency{0.1f};
+    wolfsound::Frequency lfoFrequency{2.f};
   };
 
   Flanger() = default;

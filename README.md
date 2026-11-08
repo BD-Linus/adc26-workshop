@@ -263,7 +263,7 @@ git checkout task2
     - [ ] Inspect the spectrograms generated in the _output_ folder. How is the spectrogram of the output different from the spectrogram of the input? Was it expected?
 - [ ] Add an LFO
     - [ ] Instantiate an `LFO` instance in the `Flanger` constructor
-    - [ ] Immediately set its frequency to 0.1 Hz
+    - [ ] Immediately set its frequency to 2 Hz
     - [ ] In `process_sample()`, `get_next_value()` of the LFO and transform it to unipolar [0, 1] range
     - [ ] Calculate the delay value of the modulated tap for the current sample
     - [ ] Replace the previously fixed delay value in output sample computation with the LFO-modulated one
@@ -316,7 +316,7 @@ Usually, we would implement parameter smoothing in this part but `juce::dsp::Osc
     - [ ] Add a `juce::dsp::Oscillator` member and initialize it with a sine oscillator
     - [ ] `prepare()` it in `Flanger::prepare()`
     - [ ] `reset()` it in `Flanger::reset()`
-    - [ ] Set its frequency to 0.1 Hz in `Flanger::prepare()`
+    - [ ] Set its frequency to 2 Hz in `Flanger::prepare()`
     - [ ] Compute the unipolar LFO value in `Flanger::processSample()`
     - [ ] Calculate the modulated delay value and use it in the output sample calculation in `Flanger::processSample()`
     - [ ] Compile the project
@@ -324,15 +324,15 @@ Usually, we would implement parameter smoothing in this part but `juce::dsp::Osc
 - [ ] Make parameters (LFO frequency) adjustable
     - [ ] Create a `juce::AudioProcessorValueTreeState apvts_` member in `PluginProcessor`
     - [ ] Create a `juce::AudioParameterFloat` instance upon `PluginProcessor` construction and add it to the `apvts_`; use the following parameters:
-        * ID "flangerFrequencyHz"
+        * ID "lfoFrequencyHz"
         * version hint 1
         * name "LFO frequency"
-        * range [0.1, 10] Hz with steps of 0.01
-        * default value 0.1 Hz
+        * range [0.01, 10] Hz with steps of 0.01
+        * default value 2 Hz
         * label "Hz"
     - [ ] Retrieve the pointer to the parameter (or to its raw value) and store it in a `PluginProcessor`'s member
     - [ ] Create a `Flanger::Parameters` struct with a single `wolfsound::Frequency` member; this is to pass the LFO frequency to the flanger
-    - [ ] Initialize the member with 0.1
+    - [ ] Initialize the member with 2 Hz
     - [ ] Create a setter for the parameters, i.e., `Flanger::setParameters(const Parameters&)` where you update the frequency of the `juce::dsp::Oscillator` instance
     - [ ] Set flanger's parameters with this setter in `processBlock()` after retrieving the plugin parameter value
 - [ ] Return a `juce::GenericAudioProcessorEditor` in `PluginProcessor::createEditor()` (we're just working on the DSP part after all)
