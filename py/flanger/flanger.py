@@ -136,7 +136,7 @@ class Flanger:
         max_delay_ms = 2
         self.max_delay = int(np.ceil(sample_rate * max_delay_ms / 1000))
         self.delay_line = FractionalDelayLine(self.max_delay)
-        self.middle_delay = self.max_delay // 2
+        self.middle_delay = self.max_delay / 2
         self.feedback = 0.7
         self.blend = 0.7
         self.feedforward = 0.7
