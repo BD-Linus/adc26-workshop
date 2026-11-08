@@ -345,6 +345,7 @@ Usually, we would implement parameter smoothing in this part but `juce::dsp::Osc
     - [ ] Add an `explicit` constructor of `Flanger` that takes `Parameters::Ptr` as its only argument and stores it in the just added member (you may need to default the default constructor implementation)
     - [ ] Call `setParameters(*parameters_)` in `process()` before the actual processing begins
     - [ ] Instead of calling `flanger_.setParameters(newParameters)` in `processBlock()`, set the shared state with `*flanger_.state = newParameters`
+    - [ ] In `processBlock()`, pass the whole buffer: `juce::dsp::AudioBlock<SampleType> audioBlock{buffer};`
     - [ ] Compile the project
     - [ ] Run `AudioProcessor.StereoTest` with `ctest --preset <used-preset> -R "StereoTest"`. Does it pass?
     - [ ] In the DAW of your choice, load _data/saw200.0Hz5.0s_stereo.wav_ on a track and put the plugin on the same track. Are both channels processed in the same way? Are changes to LFO frequency reflected accordingly?
