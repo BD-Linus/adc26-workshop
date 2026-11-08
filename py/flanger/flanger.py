@@ -2,12 +2,7 @@ import numpy as np
 
 
 def clp2(x):
-    x = x - 1
-    x = x | (x >> 1)
-    x = x | (x >> 2)
-    x = x | (x >> 4)
-    x = x | (x >> 16)
-    return x + 1
+    return 1 << (x - 1).bit_length() if x > 0 else 0
 
 
 class DelayLine:
