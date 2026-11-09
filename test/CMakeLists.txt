@@ -9,16 +9,15 @@ set(SOURCES source/AudioProcessorTest.cpp source/DelayLineTests.cpp source/Flang
 add_executable(${PROJECT_NAME} ${SOURCES})
 
 # Sets the necessary include directories: ours, JUCE's, and googletest's.
-target_include_directories(
-  ${PROJECT_NAME} PRIVATE ${JUCE_SOURCE_DIR}/modules
-                          ${GOOGLETEST_SOURCE_DIR}/googletest/include
-)
+target_include_directories(${PROJECT_NAME} SYSTEM PRIVATE ${JUCE_SOURCE_DIR}/modules ${GOOGLETEST_SOURCE_DIR}/googletest/include)
 
-set_source_files_properties(${SOURCES} PROPERTIES COMPILE_OPTIONS "${PROJECT_WARNINGS_CXX}")
+set_source_files_properties(${SOURCES} ${CMAKE_SOURCE_DIR}/plugin/plugin.cpp PROPERTIES COMPILE_OPTIONS "${PROJECT_WARNINGS_CXX}")
 
 target_compile_definitions(
   ${PROJECT_NAME} PRIVATE AUDIO_INPUT_FILES_DIRECTORY="${CMAKE_SOURCE_DIR}/data"
                           AUDIO_OUTPUT_FILES_DIRECTORY="${CMAKE_SOURCE_DIR}/output"
+                          JUCE_WEB_BROWSER=0
+                          JUCE_USE_CURL=0
 )
 
 # Thanks to the fact that we link against the gtest_main library, we don't have to write the main function ourselves.

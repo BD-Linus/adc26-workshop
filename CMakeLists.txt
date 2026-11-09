@@ -57,7 +57,8 @@ juce_add_plugin(
   TRUE
 )
 
-target_compile_options(plugin INTERFACE "${PROJECT_WARNINGS_CXX}")
+set_source_files_properties(plugin/plugin.cpp PROPERTIES COMPILE_OPTIONS "${PROJECT_WARNINGS_CXX}")
+target_include_directories(${PROJECT_NAME} SYSTEM PRIVATE ${JUCE_SOURCE_DIR}/modules)
 target_compile_definitions(plugin INTERFACE PLUGIN_NAME="${PLUGIN_NAME}")
 
 # Links to all necessary dependencies. The present ones are recommended by JUCE.
